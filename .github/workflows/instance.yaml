@@ -29,8 +29,7 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-    
-    # Initialize Terraform 
+
     - name: Terraform Init
       run: terraform init
       working-directory: .  # Where should this command be run?
@@ -46,7 +45,6 @@ jobs:
       working-directory: .
       
     # Apply the Terraform plan
-    #- name: Terraform vars
     - name: terraform apply
       run: terraform apply -var instanceName=${{ github.event.inputs.instanceName }} -var awsRegion=${{ github.event.inputs.awsRegion }} -var instanceType=${{ github.event.inputs.instanceType }} -auto-approve
       working-directory: .
@@ -78,9 +76,7 @@ jobs:
       run: terraform fmt
       working-directory: .
       
-      
     # Destroy all resources 
-    #- name: Terraform Destroy
     - name: terraform apply
       run: terraform destroy -var instanceName=${{ github.event.inputs.instanceName }} -var awsRegion=${{ github.event.inputs.awsRegion }} -auto-approve
       working-directory: .
