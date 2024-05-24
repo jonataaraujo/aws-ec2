@@ -1,9 +1,6 @@
-# Define the name of the GitHub Action workflow
-name: Create ec2 instance
-# This workflow is manually triggered using the GitHub Actions UI
+name: Provision t3.micro EC2
 on:
   workflow_dispatch:
-    # Define inputs that are required for the manual trigger
     inputs:
       instanceName:
         description: 'Name of the AWS Instance'  # What's this input for?
